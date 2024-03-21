@@ -32,13 +32,71 @@ public class MainActivity extends AppCompatActivity {
     private Button plusMinusButton;
     private Button sqrtButton;
     private TextView display;
-    String expressionToCalculate = "";
+    String expressionToCalculate = "0";
 
     void displayText(String expressionSingle){
-        expressionToCalculate = expressionToCalculate.concat(expressionSingle);
-        display.setText(expressionToCalculate);
-        //  display.setText(display.getText().toString() + text);
+        if(expressionToCalculate == "0") {
+            display.setText(expressionSingle);
+            expressionToCalculate = expressionSingle;
+        }else {
+            expressionToCalculate = expressionToCalculate.concat(expressionSingle);
+            display.setText(expressionToCalculate);
+        }
     }
+
+    public static double evaluateExpression(String expressionToCalculate) {
+        expressionToCalculate = expressionToCalculate.replaceAll("\\s+", "");
+
+        double result = 0;
+        double currentNumber = 0;
+        char operation = '+';
+        int decimalPointCount = 0; // Variable to count decimal places
+
+        for (int i = 0; i < expressionToCalculate.length(); i++) {
+            char c = expressionToCalculate.charAt(i);
+
+            if (Character.isDigit(c)) {
+                if (decimalPointCount > 0) {
+                    currentNumber += (c - '0') / Math.pow(10, decimalPointCount); // Adjust for decimal point
+                    decimalPointCount++;
+                } else {
+                    currentNumber = currentNumber * 10 + (c - '0');
+                }
+            } else if (c == '.') {
+                decimalPointCount = 1; // Set the flag to indicate the presence of a decimal point
+            }
+
+            if (c == '%') {
+                currentNumber /= 100; // Treat percentage as division by 100
+            }
+
+            if (!Character.isDigit(c) && c != '.' || i == expressionToCalculate.length() - 1) {
+                switch (operation) {
+                    case '+':
+                        result += currentNumber;
+                        break;
+                    case '-':
+                        result -= currentNumber;
+                        break;
+                    case '*':
+                        result *= currentNumber;
+                        break;
+                    case '/':
+                        result /= currentNumber;
+                        break;
+                    default:
+                        break;
+                }
+
+                operation = c;
+                currentNumber = 0;
+                decimalPointCount = 0; // Reset the decimal point count
+            }
+        }
+
+        return result;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -211,6 +269,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle equal button click
+                String Temp = String.valueOf(evaluateExpression( expressionToCalculate));
+                expressionToCalculate = "0";
+                displayText(Temp);
             }
         });
 
@@ -219,6 +280,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle AC button click
+                expressionToCalculate = "0";
+                display.setText(expressionToCalculate);
             }
         });
 
@@ -227,6 +290,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle clear button click
+                expressionToCalculate = "0";
+                display.setText(expressionToCalculate);
             }
         });
 
@@ -235,6 +300,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle percentage button click
+                displayText("%");
             }
         });
 
