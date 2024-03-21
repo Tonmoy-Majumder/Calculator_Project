@@ -4,9 +4,9 @@ import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         
         //intializing buttons
-        //oneButton = findViewById(R.id.oneButton);
+         oneButton = findViewById(R.id.oneButton);
+         twoButton = findViewById(R.id.twoButton);
     }
 }
