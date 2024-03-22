@@ -162,7 +162,7 @@
                     android:id="@+id/divisionButton"
                     android:layout_width="70dp"
                     android:layout_height="match_parent"
-                    android:text="/"
+                    android:text="÷"
                     />
 
             </LinearLayout>
@@ -305,7 +305,7 @@
                     android:layout_width="60dp"
                     android:layout_height="match_parent"
 
-                    android:text="x"
+                    android:text="×"
                     />
             </LinearLayout>
 

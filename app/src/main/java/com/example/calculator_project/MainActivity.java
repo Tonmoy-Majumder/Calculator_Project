@@ -81,10 +81,10 @@ public class MainActivity extends AppCompatActivity {
                     case '-':
                         result -= currentNumber;
                         break;
-                    case '*':
+                    case '×':
                         result *= currentNumber;
                         break;
-                    case '/':
+                    case '÷':
                         result /= currentNumber;
                         break;
                     default:
@@ -244,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
         multiplicationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayText("*");
+                displayText("×");
                 // Update display or perform any other action needed
             }
         });
@@ -253,7 +253,7 @@ public class MainActivity extends AppCompatActivity {
         divisionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayText("/");
+                displayText("÷");
                 // Update display or perform any other action needed
             }
         });
