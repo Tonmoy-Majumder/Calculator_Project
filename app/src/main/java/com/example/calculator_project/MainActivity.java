@@ -3,7 +3,6 @@ package com.example.calculator_project;
 import android.os.*;
 import android.widget.*;
 import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.activity.EdgeToEdge;
 
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Button dot;
     private Button equal;
     private Button acButton;
-    private Button clearButton;
+    //private Button clearButton;
     private Button percentageButton;
     private Button plusMinusButton;
     private Button sqrtButton;
@@ -43,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             display.setText(expressionToCalculate);
         }
     }
+
 
     public static double evaluateExpression(String expressionToCalculate) {
         expressionToCalculate = expressionToCalculate.replaceAll("\\s+", "");
@@ -69,8 +69,11 @@ public class MainActivity extends AppCompatActivity {
             if (c == '%') {
                 currentNumber /= 100; // Treat percentage as division by 100
             }
+            if (c == '√') {
+                currentNumber = Math.sqrt(currentNumber); // Square root operation
+            }
 
-            if (!Character.isDigit(c) && c != '.' || i == expressionToCalculate.length() - 1) {
+            if (!Character.isDigit(c) && c != '.' && c != '√' || i == expressionToCalculate.length() - 1) {
                 switch (operation) {
                     case '+':
                         result += currentNumber;
@@ -122,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         dot = findViewById(R.id.dot);
         equal = findViewById(R.id.equal);
         acButton = findViewById(R.id.acButton);
-        clearButton = findViewById(R.id.clearbutton);
+        //clearButton = findViewById(R.id.clearbutton);
         percentageButton = findViewById(R.id.percentageButton);
         plusMinusButton = findViewById(R.id.plusMinusButton);
         sqrtButton = findViewById(R.id.sqrtButton);
@@ -286,14 +289,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
 // Set OnClickListener for clearButton
-        clearButton.setOnClickListener(new View.OnClickListener() {
+       /* clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Handle clear button click
                 expressionToCalculate = "0";
                 display.setText(expressionToCalculate);
             }
-        });
+        });*/
 
 // Set OnClickListener for percentageButton
         percentageButton.setOnClickListener(new View.OnClickListener() {
@@ -315,8 +318,9 @@ public class MainActivity extends AppCompatActivity {
 // Set OnClickListener for sqrtButton
         sqrtButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v){
                 // Handle square root button click
+                displayText("√");
             }
         });
 
