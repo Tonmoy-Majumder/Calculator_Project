@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private Button acButton;
     //private Button clearButton;
     private Button percentageButton;
-    private Button plusMinusButton;
+    private Button backSpaceButton;
     private Button sqrtButton;
     private TextView display;
     String expressionToCalculate = "0";
@@ -40,6 +40,16 @@ public class MainActivity extends AppCompatActivity {
         }else {
             expressionToCalculate = expressionToCalculate.concat(expressionSingle);
             display.setText(expressionToCalculate);
+        }
+    }
+
+    public static String popLastCharacter(String input) {
+        if (input == null || input.isEmpty()) {
+            // Handle empty or null input
+            return input;
+        } else {
+            // Return the input string without the last character
+            return input.substring(0, input.length() - 1);
         }
     }
 
@@ -125,9 +135,8 @@ public class MainActivity extends AppCompatActivity {
         dot = findViewById(R.id.dot);
         equal = findViewById(R.id.equal);
         acButton = findViewById(R.id.acButton);
-        //clearButton = findViewById(R.id.clearbutton);
         percentageButton = findViewById(R.id.percentageButton);
-        plusMinusButton = findViewById(R.id.plusMinusButton);
+        backSpaceButton = findViewById(R.id.backSpaceButton);
         sqrtButton = findViewById(R.id.sqrtButton);
         display = findViewById(R.id.display);
 
@@ -288,16 +297,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-// Set OnClickListener for clearButton
-       /* clearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle clear button click
-                expressionToCalculate = "0";
-                display.setText(expressionToCalculate);
-            }
-        });*/
-
 // Set OnClickListener for percentageButton
         percentageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -307,11 +306,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-// Set OnClickListener for plusMinusButton
-        plusMinusButton.setOnClickListener(new View.OnClickListener() {
+// Set OnClickListener for backSpaceButton
+        backSpaceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Handle plus/minus button click
+                expressionToCalculate = popLastCharacter(expressionToCalculate);
+                display.setText(expressionToCalculate);
             }
         });
 

@@ -15,16 +15,17 @@
         android:textSize="48sp"
         android:textAlignment="viewEnd"
         android:padding="10dp"
-        android:background="@drawable/border_background"
         android:orientation="vertical"
-        android:gravity="bottom" />
+        android:gravity="bottom"
+        android:layout_marginTop="130dp"/>
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnCount="5"
-        android:rowCount="6"
+        android:columnCount="4"
+        android:rowCount="5"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/display">
+        android:layout_below="@id/display"
+        android:layout_marginBottom="5dp">
 
         <androidx.cardview.widget.CardView
 
@@ -203,7 +204,7 @@
 
 
                 <Button
-                    android:id="@+id/plusMinusButton"
+                    android:id="@+id/backSpaceButton"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="⌫"
