@@ -37,9 +37,24 @@ public class MainActivity extends AppCompatActivity {
         if(expressionToCalculate == "0") {
             display.setText(expressionSingle);
             expressionToCalculate = expressionSingle;
-        }else {
+        }
+        else {
             expressionToCalculate = expressionToCalculate.concat(expressionSingle);
             display.setText(expressionToCalculate);
+        }
+    }
+
+    void checkOperator(String expressionOperator){
+
+        String check = expressionToCalculate.substring(expressionToCalculate.length() - 1);
+
+        if(check.equals("+") || check.equals("-") || check.equals("×")  || check.equals("÷") || check.equals("%") || check.equals("√") || check.equals("."))
+        {
+            expressionToCalculate = expressionToCalculate.substring(0, expressionToCalculate.length() - 1).concat(expressionOperator);
+            display.setText(expressionToCalculate);
+        }
+        else{
+            displayText(expressionOperator);
         }
     }
 
@@ -235,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
         plusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayText("+");
+                checkOperator("+");
                 // Update display or perform any other action needed
             }
         });
@@ -244,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
         minusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayText("-");
+                checkOperator("-");
                 // Update display or perform any other action needed
             }
         });
@@ -253,7 +268,7 @@ public class MainActivity extends AppCompatActivity {
         multiplicationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayText("×");
+                checkOperator("×");
                 // Update display or perform any other action needed
             }
         });
@@ -262,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
         divisionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayText("÷");
+                checkOperator("÷");
                 // Update display or perform any other action needed
             }
         });
@@ -271,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
         dot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayText(".");
+                checkOperator(".");
                 // Update display or perform any other action needed
             }
         });
@@ -302,7 +317,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle percentage button click
-                displayText("%");
+                checkOperator("%");
             }
         });
 
@@ -321,7 +336,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 // Handle square root button click
-                displayText("√");
+                checkOperator("√");
             }
         });
 
