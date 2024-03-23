@@ -50,7 +50,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/green"
                     android:textSize="35dp"
-                    
+
                     />
             </LinearLayout>
 
@@ -80,7 +80,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/black"
                     android:textSize="35dp"
-                    
+
                     />
             </LinearLayout>
 
@@ -111,7 +111,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/black"
                     android:textSize="35dp"
-                    
+
                     />
             </LinearLayout>
 
@@ -143,7 +143,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/black"
                     android:textSize="35dp"
-                    
+
                     />
             </LinearLayout>
 
@@ -175,7 +175,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/green"
                     android:textSize="35dp"
-                    
+
                     />
 
             </LinearLayout>
@@ -209,7 +209,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/green"
                     android:textSize="35dp"
-                    
+
                     />
             </LinearLayout>
 
@@ -241,7 +241,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/black"
                     android:textSize="35dp"
-                    
+
                     />
             </LinearLayout>
 
@@ -273,7 +273,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/black"
                     android:textSize="35dp"
-                    
+
                     />
             </LinearLayout>
 
@@ -305,7 +305,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/black"
                     android:textSize="35dp"
-                    
+
                     />
             </LinearLayout>
 
@@ -337,7 +337,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/green"
                     android:textSize="35dp"
-                    
+
 
                     />
             </LinearLayout>
@@ -370,7 +370,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/green"
                     android:textSize="35dp"
-                    
+
                     />
             </LinearLayout>
 
@@ -402,7 +402,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/black"
                     android:textSize="35dp"
-                    
+
                     />
             </LinearLayout>
 
@@ -435,7 +435,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/black"
                     android:textSize="35dp"
-                    
+
                     />
             </LinearLayout>
 
@@ -467,7 +467,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/black"
                     android:textSize="35dp"
-                    
+
                     />
             </LinearLayout>
 
@@ -499,7 +499,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/green"
                     android:textSize="35dp"
-                    
+
                     />
 
 
@@ -536,7 +536,7 @@
                     android:backgroundTint="@color/white"
                     android:textColor="@color/green"
                     android:textSize="35dp"
-                    
+
                     />
             </LinearLayout>
 
@@ -569,7 +569,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/black"
                     android:textSize="35dp"
-                    
+
                     />
             </LinearLayout>
 
@@ -601,7 +601,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/black"
                     android:textSize="35dp"
-                    
+
                     />
             </LinearLayout>
 
@@ -633,7 +633,7 @@
                     android:backgroundTint="@color/green"
                      android:textColor="@color/white"
                     android:textSize="35dp"
-                    
+
                     />
             </LinearLayout>
 
@@ -687,7 +687,7 @@
                     android:backgroundTint="@color/white"
                      android:textColor="@color/green"
                     android:textSize="35dp"
-                    
+
                     />
             </LinearLayout>
 
