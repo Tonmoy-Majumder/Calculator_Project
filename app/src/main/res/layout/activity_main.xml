@@ -15,15 +15,17 @@
         android:textSize="48sp"
         android:textAlignment="viewEnd"
         android:padding="10dp"
-        android:background="@drawable/border_background"
         android:orientation="vertical"
-        android:gravity="bottom" />
+        android:gravity="bottom"
+        android:layout_marginTop="130dp"
+        />
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:columnCount="5"
         android:rowCount="6"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp"
         android:layout_below="@id/display">
 
         <androidx.cardview.widget.CardView
