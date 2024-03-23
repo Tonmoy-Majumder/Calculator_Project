@@ -1,0 +1,11 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Add your other style attributes here if needed -->
+    </style>
+
+    <!-- Define a custom style with the desired font -->
+    <style name="CustomFontStyle">
+        <item name="android:fontFamily">@font/myfont</item>
+        <!-- You can also add other text attributes here, like text size, text color, etc. -->
+    </style>
+</resources>
