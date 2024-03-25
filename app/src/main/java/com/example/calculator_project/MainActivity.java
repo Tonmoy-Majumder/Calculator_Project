@@ -32,11 +32,27 @@ public class MainActivity extends AppCompatActivity {
     private Button sqrtButton;
     private TextView display;
     String expressionToCalculate = "0";
+    boolean sqrtPressed = false;
+    static String expressionToSquareRoot = "" ;
+
+    double sqrtExpressionToNumber (String SqrtExpression){
+        SqrtExpression= SqrtExpression.substring(1);
+
+
+        return Double.parseDouble(SqrtExpression);
+    }
 
     void displayText(String expressionSingle){
-        if(expressionToCalculate == "0") {
+        if(sqrtPressed)
+         {
+             expressionToSquareRoot = expressionToSquareRoot.concat(expressionSingle);
+         }
+
+
+        if(expressionToCalculate.equals("0")) {
             display.setText(expressionSingle);
             expressionToCalculate = expressionSingle;
+
         }
         else {
             expressionToCalculate = expressionToCalculate.concat(expressionSingle);
@@ -44,16 +60,56 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    String checkSubstring(String checkPrevious, int position){
+       String nLastChar= checkPrevious.substring(checkPrevious.length() - position);
+
+        return nLastChar;
+    }
     void checkOperator(String expressionOperator){
 
-        String check = expressionToCalculate.substring(expressionToCalculate.length() - 1);
+        String check = checkSubstring(expressionToCalculate,1);
+        //String check2 = checkSubstring(expressionToCalculate,2);
 
-        if(check.equals("+") || check.equals("-") || check.equals("×")  || check.equals("÷") || check.equals("%") || check.equals("√") || check.equals("."))
+        if(check.equals("+") || check.equals("-") || check.equals("×")  || check.equals("÷") || check.equals("√") || check.equals("%") || check.equals("."))
         {
-            expressionToCalculate = expressionToCalculate.substring(0, expressionToCalculate.length() - 1).concat(expressionOperator);
-            display.setText(expressionToCalculate);
+            if (expressionOperator.equals("√")) {
+                sqrtPressed = true;
+
+                if(check.equals("√"))
+                {
+                    expressionToCalculate = expressionToCalculate.substring(0, expressionToCalculate.length() - 1).concat(expressionOperator);
+                    display.setText(expressionToCalculate);
+                }
+                else{
+                    displayText(expressionOperator);
+                }
+
+            } else{
+
+                String check2 = checkSubstring(expressionToCalculate,2);
+                if(check2.equals("+") || check2.equals("-") || check2.equals("×")  || check2.equals("÷") || check2.equals("%") || check2.equals(".")){
+
+                    sqrtPressed = false;
+                    expressionToCalculate = check2.concat(expressionOperator);
+                    display.setText(expressionToCalculate);
+
+                    System.out.println(1234);
+                }else{
+                    sqrtPressed = false;
+                    expressionToCalculate = check2.concat(expressionOperator);
+                    display.setText(expressionToCalculate);
+
+                    System.out.println(9870);
+                }
+
+            }
+
         }
         else{
+            if (expressionOperator.equals("√"))
+            {
+                sqrtPressed = true;
+            }
             displayText(expressionOperator);
         }
     }
@@ -69,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public static double evaluateExpression(String expressionToCalculate) {
+    public  double evaluateExpression(String expressionToCalculate) {
         expressionToCalculate = expressionToCalculate.replaceAll("\\s+", "");
 
         double result = 0;
@@ -95,13 +151,17 @@ public class MainActivity extends AppCompatActivity {
                 currentNumber /= 100; // Treat percentage as division by 100
             }
             if (c == '√') {
-                currentNumber = Math.sqrt(currentNumber); // Square root operation
+
+                double temp = sqrtExpressionToNumber(expressionToSquareRoot);
+                currentNumber = Math.sqrt(temp); // Square root operation
+
+
             }
 
             if (!Character.isDigit(c) && c != '.' && c != '√' || i == expressionToCalculate.length() - 1) {
                 switch (operation) {
                     case '+':
-                        result += currentNumber;
+                        result = result + currentNumber;
                         break;
                     case '-':
                         result -= currentNumber;
@@ -121,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                 decimalPointCount = 0; // Reset the decimal point count
             }
         }
-
+        System.out.println(result);
         return result;
     }
 
@@ -250,6 +310,8 @@ public class MainActivity extends AppCompatActivity {
         plusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 checkOperator("+");
                 // Update display or perform any other action needed
             }
@@ -259,6 +321,7 @@ public class MainActivity extends AppCompatActivity {
         minusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 checkOperator("-");
                 // Update display or perform any other action needed
             }
@@ -268,6 +331,7 @@ public class MainActivity extends AppCompatActivity {
         multiplicationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 checkOperator("×");
                 // Update display or perform any other action needed
             }
@@ -277,6 +341,7 @@ public class MainActivity extends AppCompatActivity {
         divisionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 checkOperator("÷");
                 // Update display or perform any other action needed
             }
@@ -298,6 +363,7 @@ public class MainActivity extends AppCompatActivity {
                 // Handle equal button click
                 String Temp = String.valueOf(evaluateExpression( expressionToCalculate));
                 expressionToCalculate = "0";
+                sqrtPressed = false;
                 displayText(Temp);
             }
         });
@@ -308,6 +374,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Handle AC button click
                 expressionToCalculate = "0";
+                expressionToSquareRoot = "";
                 display.setText(expressionToCalculate);
             }
         });
@@ -336,6 +403,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 // Handle square root button click
+
+
+
                 checkOperator("√");
             }
         });
