@@ -31,39 +31,52 @@ public class MainActivity extends AppCompatActivity {
     private Button backSpaceButton;
     //private Button sqrtButton;
     private TextView display;
+    boolean lastEqualPressed = false;
     String expressionToCalculate = "0";
+
 
     void displayText(String expressionSingle){
 
-        if(expressionToCalculate.equals("0")) {
+        if(lastEqualPressed){
+
             display.setText(expressionSingle);
-            expressionToCalculate = expressionSingle;
+            //expressionToCalculate = expressionSingle;
+            lastEqualPressed = false;
+        }
+        else{
+            /*if(expressionSingle.equals("+") || expressionSingle.equals("-") || expressionSingle.equals("×") || expressionSingle.equals("÷") || expressionSingle.equals(".") || expressionSingle.equals("%")){
+                expressionToCalculate = expressionToCalculate.concat(expressionSingle);
+                display.setText(expressionToCalculate);
+            }*/
+            if(expressionToCalculate.equals("0")) {
+                display.setText(expressionSingle);
+                expressionToCalculate = expressionSingle;
 
+            }
+            else {
+              
+                expressionToCalculate = expressionToCalculate.concat(expressionSingle);
+                display.setText(expressionToCalculate);
+            }
         }
-        else {
-            expressionToCalculate = expressionToCalculate.concat(expressionSingle);
-            display.setText(expressionToCalculate);
-        }
+
+
+
     }
 
-    String checkSubstring(String checkPrevious, int position){
-       String nLastChar= checkPrevious.substring(checkPrevious.length() - position);
 
-        return nLastChar;
-    }
+
     void checkOperator(String expressionOperator){
 
-        String check = checkSubstring(expressionToCalculate,1);
+        String check = expressionToCalculate.substring(expressionToCalculate.length() - 1);
 
-        if(check.equals("+") || check.equals("-") || check.equals("×")  || check.equals("÷") || check.equals("√") || check.equals("%") || check.equals(".")){
+        if(check.equals("+") || check.equals("-") || check.equals("×")  || check.equals("÷") || check.equals("%") || check.equals(".")){
             expressionToCalculate = expressionToCalculate.substring(0, expressionToCalculate.length() - 1).concat(expressionOperator);
             display.setText(expressionToCalculate);
         }
         else{
             displayText(expressionOperator);
         }
-
-
     }
 
     public static String popLastCharacter(String input) {
@@ -126,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 decimalPointCount = 0; // Reset the decimal point count
             }
         }
-        System.out.println(result);
+
         return result;
     }
 
@@ -296,6 +309,7 @@ public class MainActivity extends AppCompatActivity {
         dot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 checkOperator(".");
                 // Update display or perform any other action needed
             }
@@ -306,6 +320,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Handle equal button click
+                lastEqualPressed = true;
                 String Temp = String.valueOf(evaluateExpression( expressionToCalculate));
                 expressionToCalculate = "0";
                 displayText(Temp);
