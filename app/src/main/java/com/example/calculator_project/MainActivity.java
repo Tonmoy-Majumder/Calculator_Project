@@ -29,25 +29,11 @@ public class MainActivity extends AppCompatActivity {
     //private Button clearButton;
     private Button percentageButton;
     private Button backSpaceButton;
-    private Button sqrtButton;
+    //private Button sqrtButton;
     private TextView display;
     String expressionToCalculate = "0";
-    boolean sqrtPressed = false;
-    static String expressionToSquareRoot = "" ;
-
-    double sqrtExpressionToNumber (String SqrtExpression){
-        SqrtExpression= SqrtExpression.substring(1);
-
-
-        return Double.parseDouble(SqrtExpression);
-    }
 
     void displayText(String expressionSingle){
-        if(sqrtPressed)
-         {
-             expressionToSquareRoot = expressionToSquareRoot.concat(expressionSingle);
-         }
-
 
         if(expressionToCalculate.equals("0")) {
             display.setText(expressionSingle);
@@ -68,50 +54,16 @@ public class MainActivity extends AppCompatActivity {
     void checkOperator(String expressionOperator){
 
         String check = checkSubstring(expressionToCalculate,1);
-        //String check2 = checkSubstring(expressionToCalculate,2);
 
-        if(check.equals("+") || check.equals("-") || check.equals("×")  || check.equals("÷") || check.equals("√") || check.equals("%") || check.equals("."))
-        {
-            if (expressionOperator.equals("√")) {
-                sqrtPressed = true;
-
-                if(check.equals("√"))
-                {
-                    expressionToCalculate = expressionToCalculate.substring(0, expressionToCalculate.length() - 1).concat(expressionOperator);
-                    display.setText(expressionToCalculate);
-                }
-                else{
-                    displayText(expressionOperator);
-                }
-
-            } else{
-
-                String check2 = checkSubstring(expressionToCalculate,2);
-                if(check2.equals("+") || check2.equals("-") || check2.equals("×")  || check2.equals("÷") || check2.equals("%") || check2.equals(".")){
-
-                    sqrtPressed = false;
-                    expressionToCalculate = check2.concat(expressionOperator);
-                    display.setText(expressionToCalculate);
-
-                    System.out.println(1234);
-                }else{
-                    sqrtPressed = false;
-                    expressionToCalculate = check2.concat(expressionOperator);
-                    display.setText(expressionToCalculate);
-
-                    System.out.println(9870);
-                }
-
-            }
-
+        if(check.equals("+") || check.equals("-") || check.equals("×")  || check.equals("÷") || check.equals("√") || check.equals("%") || check.equals(".")){
+            expressionToCalculate = expressionToCalculate.substring(0, expressionToCalculate.length() - 1).concat(expressionOperator);
+            display.setText(expressionToCalculate);
         }
         else{
-            if (expressionOperator.equals("√"))
-            {
-                sqrtPressed = true;
-            }
             displayText(expressionOperator);
         }
+
+
     }
 
     public static String popLastCharacter(String input) {
@@ -150,15 +102,8 @@ public class MainActivity extends AppCompatActivity {
             if (c == '%') {
                 currentNumber /= 100; // Treat percentage as division by 100
             }
-            if (c == '√') {
 
-                double temp = sqrtExpressionToNumber(expressionToSquareRoot);
-                currentNumber = Math.sqrt(temp); // Square root operation
-
-
-            }
-
-            if (!Character.isDigit(c) && c != '.' && c != '√' || i == expressionToCalculate.length() - 1) {
+            if (!Character.isDigit(c) && c != '.' || i == expressionToCalculate.length() - 1) {
                 switch (operation) {
                     case '+':
                         result = result + currentNumber;
@@ -212,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
         acButton = findViewById(R.id.acButton);
         percentageButton = findViewById(R.id.percentageButton);
         backSpaceButton = findViewById(R.id.backSpaceButton);
-        sqrtButton = findViewById(R.id.sqrtButton);
+       // sqrtButton = findViewById(R.id.sqrtButton);
         display = findViewById(R.id.display);
 
         // Set OnClickListener for oneButton
@@ -363,7 +308,6 @@ public class MainActivity extends AppCompatActivity {
                 // Handle equal button click
                 String Temp = String.valueOf(evaluateExpression( expressionToCalculate));
                 expressionToCalculate = "0";
-                sqrtPressed = false;
                 displayText(Temp);
             }
         });
@@ -374,7 +318,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Handle AC button click
                 expressionToCalculate = "0";
-                expressionToSquareRoot = "";
                 display.setText(expressionToCalculate);
             }
         });
@@ -398,17 +341,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-// Set OnClickListener for sqrtButton
-        sqrtButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                // Handle square root button click
 
-
-
-                checkOperator("√");
-            }
-        });
 
 
 
