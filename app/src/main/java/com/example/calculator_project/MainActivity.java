@@ -34,27 +34,37 @@ public class MainActivity extends AppCompatActivity {
     boolean lastEqualPressed = false;
     String expressionToCalculate = "0";
 
+    boolean checkIfNumberOrNot(String singleNumber){
+        if(singleNumber.equals("0") || singleNumber.equals("1")|| singleNumber.equals("2")|| singleNumber.equals("3")|| singleNumber.equals("4")|| singleNumber.equals("5")|| singleNumber.equals("6")|| singleNumber.equals("7")|| singleNumber.equals("8")|| singleNumber.equals("9")){
+            return true;
+        } else{
+            return false;
+        }
+    }
+
 
     void displayText(String expressionSingle){
 
         if(lastEqualPressed){
 
-            display.setText(expressionSingle);
-            //expressionToCalculate = expressionSingle;
+            expressionToCalculate = expressionSingle;
+            display.setText(expressionToCalculate);
             lastEqualPressed = false;
         }
         else{
-            /*if(expressionSingle.equals("+") || expressionSingle.equals("-") || expressionSingle.equals("×") || expressionSingle.equals("÷") || expressionSingle.equals(".") || expressionSingle.equals("%")){
+            if(expressionSingle.equals("+") || expressionSingle.equals("-") || expressionSingle.equals("×") || expressionSingle.equals("÷") || expressionSingle.equals(".") || expressionSingle.equals("%")){
+
+               //expressionToCalculate = expressionSingle;
                 expressionToCalculate = expressionToCalculate.concat(expressionSingle);
                 display.setText(expressionToCalculate);
-            }*/
-            if(expressionToCalculate.equals("0")) {
+            }
+             else if(expressionToCalculate.equals("0")) {
                 display.setText(expressionSingle);
                 expressionToCalculate = expressionSingle;
 
             }
             else {
-              
+
                 expressionToCalculate = expressionToCalculate.concat(expressionSingle);
                 display.setText(expressionToCalculate);
             }
