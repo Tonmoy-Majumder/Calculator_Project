@@ -12,15 +12,15 @@
     <TextView
         android:id="@+id/display"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:text="0"
-        android:textSize="48sp"
-        android:textAlignment="viewEnd"
-        android:padding="10dp"
-        android:orientation="vertical"
+        android:layout_height="187dp"
+        android:layout_marginTop="130dp"
         android:gravity="bottom"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:text="0"
+        android:textAlignment="viewEnd"
 
-        android:layout_marginTop="130dp"/>
+        android:textSize="48sp" />
 
     <GridLayout
         android:layout_width="match_parent"
